@@ -76,6 +76,7 @@ Plug 'ekalinin/dockerfile.vim'
 Plug 'mattn/emmet-vim'
 Plug 'maksimr/vim-jsbeautify'
 Plug 'sainnhe/everforest'
+Plug 'sgur/vim-editorconfig'
 
 call plug#end()
 
@@ -180,3 +181,9 @@ let g:everforest_background = 'soft'
 colorscheme everforest
 let g:airline_theme = 'everforest'
 let g:everforest_diagnostic_line_highlight = 1
+
+"Editor config
+let g:editorconfig_blacklist = {
+    \ 'filetype': ['git.*', 'fugitive'],
+    \ 'pattern': ['\.un~$']}
+
