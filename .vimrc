@@ -77,6 +77,14 @@ Plug 'mattn/emmet-vim'
 Plug 'maksimr/vim-jsbeautify'
 Plug 'sainnhe/everforest'
 Plug 'sgur/vim-editorconfig'
+Plug 'w0rp/ale'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 
 call plug#end()
 
@@ -187,3 +195,9 @@ let g:editorconfig_blacklist = {
     \ 'filetype': ['git.*', 'fugitive'],
     \ 'pattern': ['\.un~$']}
 
+"Deoplete for integration with ale
+let g:deoplete#enable_at_startup = 1
+
+let g:ale_linters = {
+\  'javascript':['eslint'],
+\ } 
