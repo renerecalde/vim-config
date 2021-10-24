@@ -1,3 +1,15 @@
+" tabs are at proper location
+set tabstop=8
+
+" indenting is 4 spaces
+set shiftwidth=4
+
+" activate the previous two
+set autoindent
+
+" To stop indenting when pasting with the mouse
+set pastetoggle=<f5>
+
 " Showing matches
 set showmatch
 
@@ -49,7 +61,6 @@ Plug 'junegunn/limelight.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'lambdalisue/vim-unified-diff'
 Plug 'codota/tabnine-vim'
-Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'plasticboy/vim-markdown'
@@ -77,14 +88,10 @@ Plug 'mattn/emmet-vim'
 Plug 'maksimr/vim-jsbeautify'
 Plug 'sainnhe/everforest'
 Plug 'sgur/vim-editorconfig'
-Plug 'w0rp/ale'
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'preservim/nerdtree' |
+            \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+            \ Plug 'ryanoasis/vim-devicons'
+Plug 'arnaud-lb/vim-php-namespace'
 
 call plug#end()
 
@@ -92,17 +99,11 @@ call plug#end()
 :au FocusLost * :wa
 
 " Textwidth 
-set textwidth=72
+set textwidth=100
 
-" Start NERDTree and leave the cursor in it.
-autocmd VimEnter * NERDTree
-
-" Start NERDTree and put the cursor back in the other window.
-autocmd VimEnter * NERDTree | wincmd p
-
-" Start NERDTree when Vim is started without file arguments.
+" Start NERDTree. If a file is specified, move the cursor to its window.
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
 
 " Nerd tree help command
 nnoremap <leader>n :NERDTreeFocus<CR>
@@ -195,9 +196,17 @@ let g:editorconfig_blacklist = {
     \ 'filetype': ['git.*', 'fugitive'],
     \ 'pattern': ['\.un~$']}
 
-"Deoplete for integration with ale
-let g:deoplete#enable_at_startup = 1
+" Add class
+function! IPhpInsertUse()
+    call PhpInsertUse()
+    call feedkeys('a',  'n')
+endfunction
+autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
+autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
 
-let g:ale_linters = {
-\  'javascript':['eslint'],
-\ } 
+function! IPhpExpandClass()
+    call PhpExpandClass()
+    call feedkeys('a', 'n')
+endfunction
+autocmd FileType php inoremap <Leader>e <Esc>:call IPhpExpandClass()<CR>
+autocmd FileType php noremap <Leader>e :call PhpExpandClass()<CR>
