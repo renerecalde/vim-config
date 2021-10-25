@@ -92,6 +92,7 @@ Plug 'preservim/nerdtree' |
             \ Plug 'Xuyuanp/nerdtree-git-plugin' |
             \ Plug 'ryanoasis/vim-devicons'
 Plug 'arnaud-lb/vim-php-namespace'
+Plug 'nelsyeung/twig.vim'
 
 call plug#end()
 
