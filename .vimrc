@@ -93,6 +93,7 @@ Plug 'preservim/nerdtree' |
             \ Plug 'ryanoasis/vim-devicons'
 Plug 'arnaud-lb/vim-php-namespace'
 Plug 'nelsyeung/twig.vim'
+Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 
@@ -187,10 +188,11 @@ set background=dark
 " Set contrast.
 " This configuration option should be placed before `colorscheme everforest`.
 " Available values: 'hard', 'medium'(default), 'soft'
-let g:everforest_background = 'soft'
-colorscheme everforest
-let g:airline_theme = 'everforest'
-let g:everforest_diagnostic_line_highlight = 1
+"let g:everforest_background = 'soft'
+"colorscheme everforest
+colorscheme nord
+"let g:airline_theme = 'everforest'
+"let g:everforest_diagnostic_line_highlight = 1
 
 "Editor config
 let g:editorconfig_blacklist = {
