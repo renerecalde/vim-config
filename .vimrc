@@ -1,3 +1,6 @@
+"  For fzf previews
+set termguicolors
+
 " tabs are at proper location
 set tabstop=8
 
@@ -54,6 +57,7 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 " Plugins install
+
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/goyo.vim'
@@ -65,6 +69,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-scripts/php-annotations-syntax'
@@ -72,8 +77,8 @@ Plug 'sniphpets/sniphpets-symfony'
 Plug 'rykka/riv.vim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'Shougo/unite.vim'
-Plug 'm2mdas/phpcomplete-extended'
-Plug 'm2mdas/phpcomplete-extended-laravel'
+"Plug 'm2mdas/phpcomplete-extended'
+"Plug 'm2mdas/phpcomplete-extended-laravel'
 Plug 'noahfrederick/vim-laravel'
 Plug 'tpope/vim-dispatch'             "| Optional
 Plug 'tpope/vim-projectionist'        "|
@@ -94,6 +99,10 @@ Plug 'preservim/nerdtree' |
 Plug 'arnaud-lb/vim-php-namespace'
 Plug 'nelsyeung/twig.vim'
 Plug 'arcticicestudio/nord-vim'
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
+Plug 'valloric/youcompleteme'
+Plug 'vim-scripts/SQLComplete.vim'
 
 call plug#end()
 
@@ -101,7 +110,7 @@ call plug#end()
 :au FocusLost * :wa
 
 " Textwidth 
-set textwidth=100
+set textwidth=120
 
 " Start NERDTree. If a file is specified, move the cursor to its window.
 autocmd StdinReadPre * let s:std_in=1
@@ -117,8 +126,8 @@ nnoremap <C-f> :NERDTreeFind<CR>
 nnoremap <C-p> :<C-u>Files<CR>
 
 "PHP complete_extended
-autocmd  FileType php setlocal omnifunc=phpcomplete_extended#CompletePHP
-let g:phpcomplete_index_composer_command="composer"
+"autocmd  FileType php setlocal omnifunc=phpcomplete_extended#CompletePHP
+"let g:phpcomplete_index_composer_command="composer"
 
 function! PhpSyntaxOverride()
   " Put snippet overrides in this function.
@@ -188,11 +197,11 @@ set background=dark
 " Set contrast.
 " This configuration option should be placed before `colorscheme everforest`.
 " Available values: 'hard', 'medium'(default), 'soft'
-"let g:everforest_background = 'soft'
-"colorscheme everforest
-colorscheme nord
-"let g:airline_theme = 'everforest'
-"let g:everforest_diagnostic_line_highlight = 1
+let g:everforest_background = 'soft'
+colorscheme everforest
+"colorscheme nord
+let g:airline_theme = 'everforest'
+let g:everforest_diagnostic_line_highlight = 1
 
 "Editor config
 let g:editorconfig_blacklist = {
@@ -213,3 +222,7 @@ function! IPhpExpandClass()
 endfunction
 autocmd FileType php inoremap <Leader>e <Esc>:call IPhpExpandClass()<CR>
 autocmd FileType php noremap <Leader>e :call PhpExpandClass()<CR>
+
+" Config vim-dadbot-ui database
+let g:db_ui_env_variable_url = 'DATABASE_URL'
+let g:db_ui_env_variable_name = 'DATABASE_NAME'
