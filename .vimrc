@@ -1,6 +1,9 @@
 "  For fzf previews
 set termguicolors
 
+" Set tags
+set tags=./tags,tags;$HOME
+
 " tabs are at proper location
 set tabstop=8
 
@@ -59,6 +62,8 @@ endif
 " Plugins install
 
 call plug#begin('~/.vim/plugged')
+
+
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
@@ -69,7 +74,6 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-scripts/php-annotations-syntax'
@@ -77,8 +81,8 @@ Plug 'sniphpets/sniphpets-symfony'
 Plug 'rykka/riv.vim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'Shougo/unite.vim'
-"Plug 'm2mdas/phpcomplete-extended'
-"Plug 'm2mdas/phpcomplete-extended-laravel'
+Plug 'm2mdas/phpcomplete-extended'
+Plug 'm2mdas/phpcomplete-extended-laravel'
 Plug 'noahfrederick/vim-laravel'
 Plug 'tpope/vim-dispatch'             "| Optional
 Plug 'tpope/vim-projectionist'        "|
@@ -97,12 +101,11 @@ Plug 'preservim/nerdtree' |
             \ Plug 'Xuyuanp/nerdtree-git-plugin' |
             \ Plug 'ryanoasis/vim-devicons'
 Plug 'arnaud-lb/vim-php-namespace'
-Plug 'nelsyeung/twig.vim'
-Plug 'arcticicestudio/nord-vim'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-easytags'
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
-Plug 'valloric/youcompleteme'
-Plug 'vim-scripts/SQLComplete.vim'
+Plug 'tpope/vim-dotenv'
 
 call plug#end()
 
@@ -124,10 +127,6 @@ nnoremap <C-f> :NERDTreeFind<CR>
 
 " Fzf map
 nnoremap <C-p> :<C-u>Files<CR>
-
-"PHP complete_extended
-"autocmd  FileType php setlocal omnifunc=phpcomplete_extended#CompletePHP
-"let g:phpcomplete_index_composer_command="composer"
 
 function! PhpSyntaxOverride()
   " Put snippet overrides in this function.
@@ -199,7 +198,6 @@ set background=dark
 " Available values: 'hard', 'medium'(default), 'soft'
 let g:everforest_background = 'soft'
 colorscheme everforest
-"colorscheme nord
 let g:airline_theme = 'everforest'
 let g:everforest_diagnostic_line_highlight = 1
 
