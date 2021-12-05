@@ -60,9 +60,7 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 " Plugins install
-
 call plug#begin('~/.vim/plugged')
-
 
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/goyo.vim'
@@ -106,6 +104,7 @@ Plug 'xolox/vim-easytags'
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'tpope/vim-dotenv'
+Plug 'dense-analysis/ale'
 
 call plug#end()
 
@@ -201,7 +200,7 @@ colorscheme everforest
 let g:airline_theme = 'everforest'
 let g:everforest_diagnostic_line_highlight = 1
 
-"Editor config
+" Editor config
 let g:editorconfig_blacklist = {
     \ 'filetype': ['git.*', 'fugitive'],
     \ 'pattern': ['\.un~$']}
@@ -221,6 +220,6 @@ endfunction
 autocmd FileType php inoremap <Leader>e <Esc>:call IPhpExpandClass()<CR>
 autocmd FileType php noremap <Leader>e :call PhpExpandClass()<CR>
 
-" Config vim-dadbot-ui database
+" Dadbod config
 let g:db_ui_env_variable_url = 'DATABASE_URL'
 let g:db_ui_env_variable_name = 'DATABASE_NAME'
